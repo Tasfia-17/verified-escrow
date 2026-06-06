@@ -1,5 +1,3 @@
-// Walrus + Seal integration stubs
-// Full implementation requires Walrus/Seal SDK with SuiGrpcClient
 import { ESCROW_PACKAGE_ID } from './sui-client';
 
 export interface DeliverableUploadResult {
@@ -9,32 +7,32 @@ export interface DeliverableUploadResult {
 }
 
 export async function uploadDeliverable(
-  file: File,
-  jobId: string,
-  client: string,
-  arbitrators: string[],
-  signer: any
+  _file: File,
+  _jobId: string,
+  _client: string,
+  _arbitrators: string[],
+  _signer: unknown
 ): Promise<DeliverableUploadResult> {
   throw new Error('Walrus upload requires deployed contract: ' + ESCROW_PACKAGE_ID);
 }
 
 export async function uploadCriteria(
-  criteriaCode: string,
-  jobTitle: string,
-  signer: any
+  _criteriaCode: string,
+  _jobTitle: string,
+  _signer: unknown
 ): Promise<string> {
   throw new Error('Walrus upload requires deployed contract: ' + ESCROW_PACKAGE_ID);
 }
 
 export async function downloadDeliverable(
-  blobId: string,
-  sealPolicyId: string,
-  userAddress: string,
-  signer: any
+  _blobId: string,
+  _sealPolicyId: string,
+  _userAddress: string,
+  _signer: unknown
 ): Promise<Uint8Array> {
   throw new Error('Walrus download requires deployed contract');
 }
 
-export async function fetchBlobContent(blobId: string): Promise<string> {
+export async function fetchBlobContent(_blobId: string): Promise<string> {
   throw new Error('Walrus fetch requires deployed contract');
 }
