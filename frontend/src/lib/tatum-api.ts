@@ -1,5 +1,5 @@
 // Tatum Data API integration
-const TATUM_API_KEY = process.env.NEXT_PUBLIC_TATUM_API_KEY!;
+const TATUM_API_KEY = 't-6a245613676dd5cdbaa72701-ff030e28ab0d4fcd93513999';
 const TATUM_DATA_API = 'https://api.tatum.io/v4';
 
 export interface WalletBalance {

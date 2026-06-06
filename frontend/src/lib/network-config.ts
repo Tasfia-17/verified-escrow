@@ -1,14 +1,10 @@
 'use client';
 
 import { createNetworkConfig } from '@mysten/dapp-kit';
-import { getFullnodeUrl } from '@mysten/sui/client';
 
 const { networkConfig, useNetworkVariable } = createNetworkConfig({
-  mainnet: {
-    url: process.env.NEXT_PUBLIC_TATUM_SUI_RPC || getFullnodeUrl('mainnet'),
-  },
   testnet: {
-    url: getFullnodeUrl('testnet'),
+    url: 'https://sui-testnet.gateway.tatum.io?apiKey=t-6a245613676dd5cdbaa72701-ff030e28ab0d4fcd93513999',
   },
 });
 
