@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Nav from '@/components/Nav';
+
+// Remove duplicate inline Nav - now using shared Nav component
 
 const stats = [
   { value: '100%', label: 'Cryptographically verified' },
@@ -125,33 +128,7 @@ function GridCanvas() {
 }
 
 function Nav() {
-  return (
-    <nav style={{
-      background: 'var(--surface-subtle-panel)',
-      borderBottom: '1px solid var(--color-dark-grid)',
-      padding: '0 32px',
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      height: 52, position: 'sticky', top: 0, zIndex: 100,
-    }}>
-      <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span style={{ color: 'var(--color-lime-interface)', fontFamily: 'var(--font-jetbrains)', fontSize: 13, fontWeight: 600, letterSpacing: '0.08em' }}>
-          VERIFIED
-        </span>
-        <span style={{ color: 'var(--color-faint-grid)', fontFamily: 'var(--font-jetbrains)', fontSize: 10 }}>ESCROW</span>
-      </Link>
-      <div style={{ display: 'flex', gap: 28, alignItems: 'center' }}>
-        {[['/', 'Home'], ['/create', 'Post Job'], ['/jobs', 'Find Work'], ['/my-jobs', 'My Jobs']].map(([href, label]) => (
-          <Link key={href} href={href} style={{
-            textDecoration: 'none', fontFamily: 'var(--font-inter-tight)', fontSize: 13,
-            color: 'var(--color-mid-gray-border)', transition: 'color 0.2s',
-          }}>{label}</Link>
-        ))}
-        <Link href="/create" className="btn-lime pulse" style={{ padding: '8px 16px', fontSize: 12 }}>
-          Post a Job →
-        </Link>
-      </div>
-    </nav>
-  );
+  return null;
 }
 
 export default function HomePage() {

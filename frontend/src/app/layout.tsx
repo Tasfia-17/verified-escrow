@@ -1,4 +1,5 @@
 import './globals.css';
+import { Providers } from '@/components/Providers';
 
 export const metadata = {
   title: 'Verified Escrow - Trustless Freelance Delivery',
@@ -9,7 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

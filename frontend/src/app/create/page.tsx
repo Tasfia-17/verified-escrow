@@ -1,29 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-
-function Nav() {
-  return (
-    <nav style={{
-      background: 'var(--surface-subtle-panel)',
-      borderBottom: '1px solid var(--color-dark-grid)',
-      padding: '0 32px',
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      height: 52, position: 'sticky', top: 0, zIndex: 100,
-    }}>
-      <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span style={{ color: 'var(--color-lime-interface)', fontFamily: 'var(--font-jetbrains)', fontSize: 13, fontWeight: 600, letterSpacing: '0.08em' }}>VERIFIED</span>
-        <span style={{ color: 'var(--color-faint-grid)', fontFamily: 'var(--font-jetbrains)', fontSize: 10 }}>ESCROW</span>
-      </Link>
-      <div style={{ display: 'flex', gap: 28, alignItems: 'center' }}>
-        {[['/', 'Home'], ['/create', 'Post Job'], ['/jobs', 'Find Work'], ['/my-jobs', 'My Jobs']].map(([href, label]) => (
-          <Link key={href} href={href} style={{ textDecoration: 'none', fontFamily: 'var(--font-inter-tight)', fontSize: 13, color: 'var(--color-mid-gray-border)' }}>{label}</Link>
-        ))}
-      </div>
-    </nav>
-  );
-}
+import Nav from '@/components/Nav';
 
 export default function CreateJobPage() {
   const [title, setTitle] = useState('');
