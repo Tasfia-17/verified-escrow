@@ -1,0 +1,16 @@
+{
+  "name": "verified-escrow",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "test": "cd move && sui move test",
+    "deploy:move": "cd move && sui client publish --gas-budget 200000000",
+    "deploy:nautilus": "cd nautilus && ./deploy.sh"
+  },
+  "workspaces": [
+    "frontend",
+    "nautilus"
+  ]
+}

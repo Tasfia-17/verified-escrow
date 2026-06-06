@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield shape representing security -->
+  <path d="M100 20L160 50V100C160 130 140 155 100 175C60 155 40 130 40 100V50L100 20Z" 
+        fill="url(#gradient1)" stroke="#6366F1" stroke-width="3"/>
+  
+  <!-- Checkmark in center -->
+  <path d="M75 95L92 112L125 75" stroke="#A5F3FC" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Circuit lines representing blockchain/tech -->
+  <circle cx="100" cy="60" r="4" fill="#A5F3FC"/>
+  <circle cx="130" cy="80" r="4" fill="#A5F3FC"/>
+  <circle cx="70" cy="80" r="4" fill="#A5F3FC"/>
+  <line x1="100" y1="60" x2="130" y2="80" stroke="#6366F1" stroke-width="2"/>
+  <line x1="100" y1="60" x2="70" y2="80" stroke="#6366F1" stroke-width="2"/>
+  
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="gradient1" x1="40" y1="20" x2="160" y2="175">
+      <stop offset="0%" stop-color="#312E81"/>
+      <stop offset="50%" stop-color="#4C1D95"/>
+      <stop offset="100%" stop-color="#581C87"/>
+    </linearGradient>
+  </defs>
+</svg>
