@@ -2,7 +2,6 @@
 
 import { useCurrentAccount } from '@mysten/dapp-kit';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function HomePage() {
   const account = useCurrentAccount();

@@ -1,6 +1,6 @@
 // Move contract interactions
 import { Transaction } from '@mysten/sui/transactions';
-import { suiClient, ESCROW_PACKAGE_ID, PLATFORM_ID } from './sui-client';
+import { suiClient, ESCROW_PACKAGE_ID } from './sui-client';
 
 export interface JobData {
   id: string;
@@ -26,7 +26,8 @@ export interface AttestationData {
   timestampMs: number;
 }
 
-// Create a new job
+const client = suiClient as any;
+
 export async function createJob(params: {
   paymentMIST: bigint;
   title: string;
@@ -37,9 +38,7 @@ export async function createJob(params: {
   signer: any;
 }) {
   const tx = new Transaction();
-
   const [coin] = tx.splitCoins(tx.gas, [tx.pure.u64(params.paymentMIST)]);
-
   tx.moveCall({
     target: `${ESCROW_PACKAGE_ID}::escrow::create_job`,
     arguments: [
@@ -51,33 +50,17 @@ export async function createJob(params: {
       tx.pure.u64(params.requiredApprovals),
     ],
   });
-
-  const result = await suiClient.signAndExecuteTransaction({
-    transaction: tx,
-    signer: params.signer,
-  });
-
+  const result = await client.signAndExecuteTransaction({ transaction: tx, signer: params.signer });
   return result.digest;
 }
 
-// Accept a job
 export async function acceptJob(jobId: string, signer: any) {
   const tx = new Transaction();
-
-  tx.moveCall({
-    target: `${ESCROW_PACKAGE_ID}::escrow::accept_job`,
-    arguments: [tx.object(jobId)],
-  });
-
-  const result = await suiClient.signAndExecuteTransaction({
-    transaction: tx,
-    signer,
-  });
-
+  tx.moveCall({ target: `${ESCROW_PACKAGE_ID}::escrow::accept_job`, arguments: [tx.object(jobId)] });
+  const result = await client.signAndExecuteTransaction({ transaction: tx, signer });
   return result.digest;
 }
 
-// Submit deliverable
 export async function submitDeliverable(params: {
   jobId: string;
   deliverableBlobId: string;
@@ -85,7 +68,6 @@ export async function submitDeliverable(params: {
   signer: any;
 }) {
   const tx = new Transaction();
-
   tx.moveCall({
     target: `${ESCROW_PACKAGE_ID}::escrow::submit_deliverable`,
     arguments: [
@@ -94,12 +76,7 @@ export async function submitDeliverable(params: {
       tx.pure.address(params.sealPolicyId),
     ],
   });
-
-  const result = await suiClient.signAndExecuteTransaction({
-    transaction: tx,
-    signer: params.signer,
-  });
-
+  const result = await client.signAndExecuteTransaction({ transaction: tx, signer: params.signer });
   return result.digest;
 }
 
