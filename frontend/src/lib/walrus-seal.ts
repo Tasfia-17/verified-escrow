@@ -1,5 +1,5 @@
 // Walrus + Seal integration for secure deliverable storage
-import { suiClient } from './sui-client';
+import { suiClient, ESCROW_PACKAGE_ID } from './sui-client';
 import { WalrusFile } from '@mysten/walrus';
 import { Transaction } from '@mysten/sui/transactions';
 
@@ -38,7 +38,7 @@ export async function uploadDeliverable(
   
   const { encryptedObject } = await suiClient.seal.encrypt({
     threshold: 1, // Only need 1 key server to decrypt
-    packageId: process.env.NEXT_PUBLIC_ESCROW_PACKAGE_ID!,
+    packageId: ESCROW_PACKAGE_ID,
     id: jobId,
     data: contents,
   });
@@ -107,7 +107,7 @@ export async function downloadDeliverable(
   // Build approval transaction for Seal
   const tx = new Transaction();
   tx.moveCall({
-    target: `${process.env.NEXT_PUBLIC_ESCROW_PACKAGE_ID!}::escrow::approve_access`,
+    target: `${ESCROW_PACKAGE_ID}::escrow::approve_access`,
     arguments: [
       tx.pure.address(sealPolicyId),
       tx.pure.address(userAddress),
@@ -132,7 +132,7 @@ async function createSessionKey(address: string, signer: any) {
   
   return SessionKey.create({
     address,
-    packageId: process.env.NEXT_PUBLIC_ESCROW_PACKAGE_ID!,
+    packageId: ESCROW_PACKAGE_ID,
     ttlMin: 60, // 1 hour TTL
     signer,
     suiClient,

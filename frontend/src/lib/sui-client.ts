@@ -16,6 +16,6 @@ export const suiClient = new SuiGrpcClient({
   timeout: 30000,
 }));
 
-export const ESCROW_PACKAGE_ID = process.env.NEXT_PUBLIC_ESCROW_PACKAGE_ID || '';
-export const PLATFORM_ID = process.env.NEXT_PUBLIC_PLATFORM_ID || '';
-export const NAUTILUS_ENCLAVE_ID = process.env.NEXT_PUBLIC_NAUTILUS_ENCLAVE_ID || '';
+export const ESCROW_PACKAGE_ID = '';
+export const PLATFORM_ID = '';
+export const NAUTILUS_ENCLAVE_ID = '';
